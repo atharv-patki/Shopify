@@ -1,0 +1,74 @@
+﻿<section class="section-shell page-hero">
+  <div class="section-card section-pad">
+    <div class="section-head">
+      <span class="kicker">Cart</span>
+      <h1>Your cart</h1>
+      <p>Review your selected products before checkout.</p>
+    </div>
+
+    {% if cart.item_count > 0 %}
+      <form action="{{ routes.cart_url }}" method="post">
+        <div class="cart-layout">
+          <div class="cart-items">
+            {% for item in cart.items %}
+              <article class="cart-item">
+                <a href="{{ item.url }}">
+                  {% if item.image %}
+                    {{ item.image | image_url: width: 220 | image_tag: loading: 'lazy', alt: item.product.title }}
+                  {% else %}
+                    {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                  {% endif %}
+                </a>
+
+                <div>
+                  <h3><a href="{{ item.url }}">{{ item.product.title }}</a></h3>
+                  {% if item.variant.title != 'Default Title' %}
+                    <p>{{ item.variant.title }}</p>
+                  {% endif %}
+
+                  <p><strong>{{ item.final_line_price | money }}</strong></p>
+
+                  <div class="form-actions">
+                    <input class="quantity-input" type="number" name="updates[]" value="{{ item.quantity }}" min="0" aria-label="Quantity for {{ item.product.title }}">
+                    <a class="button button--ghost" href="{{ item.url_to_remove }}">Remove</a>
+                  </div>
+                </div>
+              </article>
+            {% endfor %}
+
+            <div class="form-actions">
+              <button class="button button--ghost" type="submit" name="update">Update cart</button>
+              <a class="button button--ghost" href="{{ routes.all_products_collection_url }}">Continue shopping</a>
+            </div>
+          </div>
+
+          <aside class="cart-summary">
+            <h3>Order summary</h3>
+            <p>Subtotal: <strong>{{ cart.total_price | money }}</strong></p>
+            <p>Taxes and shipping are calculated at checkout.</p>
+
+            <label for="CartNote">Order note</label>
+            <textarea id="CartNote" name="note" placeholder="Optional note for your order">{{ cart.note }}</textarea>
+
+            <div class="form-actions">
+              <button class="button button--primary" type="submit" name="checkout">Proceed to checkout</button>
+            </div>
+          </aside>
+        </div>
+      </form>
+    {% else %}
+      <div class="empty-state">
+        <h3>Your cart is empty</h3>
+        <p>Add products to get started.</p>
+        <a class="button button--primary" href="{{ routes.all_products_collection_url }}">Shop products</a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main cart",
+  "settings": []
+}
+{% endschema %}

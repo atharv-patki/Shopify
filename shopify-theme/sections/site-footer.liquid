@@ -1,0 +1,81 @@
+﻿{% liquid
+  assign about_url = '/#about-us'
+  if section.settings.about_link != blank
+    assign about_url = section.settings.about_link
+  endif
+
+  assign contact_url = '/#contact-us'
+  if section.settings.contact_link != blank
+    assign contact_url = section.settings.contact_link
+  endif
+
+  assign account_url = routes.account_login_url | default: '/account/login'
+%}
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer-grid">
+      <div>
+        <h3>{{ shop.name }}</h3>
+        <p>{{ section.settings.footer_copy }}</p>
+      </div>
+
+      <div>
+        <h3>Quick links</h3>
+        <div class="footer-links">
+          <a href="{{ routes.root_url }}">Home</a>
+          <a href="{{ routes.collections_url }}">Catalog</a>
+          <a href="{{ about_url }}">About</a>
+          <a href="{{ contact_url }}">Contact</a>
+          <a href="{{ routes.cart_url }}">Cart</a>
+        </div>
+      </div>
+
+      <div>
+        <h3>Store support</h3>
+        <div class="footer-links">
+          <a href="{{ account_url }}" target="_top">Account login</a>
+          <a href="{{ routes.search_url }}">Search products</a>
+          <a href="{{ routes.all_products_collection_url }}">Shop all products</a>
+          <span>{{ section.settings.support_email }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</span>
+      <span>Built for performance, trust, and conversion.</span>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Site footer",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "footer_copy",
+      "label": "Footer copy",
+      "default": "Premium recovery commerce store built for trust, conversion, and long-term customer retention."
+    },
+    {
+      "type": "text",
+      "id": "support_email",
+      "label": "Support email",
+      "default": "support@aethercartlabs.com"
+    },
+    {
+      "type": "url",
+      "id": "about_link",
+      "label": "About link"
+    },
+    {
+      "type": "url",
+      "id": "contact_link",
+      "label": "Contact link"
+    }
+  ]
+}
+{% endschema %}
+

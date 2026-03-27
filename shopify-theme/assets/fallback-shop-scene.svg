@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Premium product showcase</title>
+  <desc id="desc">Stylized product scene with soft gradients and cards.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#e9f4f2"/>
+      <stop offset="52%" stop-color="#d9e9ec"/>
+      <stop offset="100%" stop-color="#ccdce8"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#f4f9f8" stop-opacity="0.94"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#1f5f67"/>
+      <stop offset="100%" stop-color="#2d8b7b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <circle cx="1280" cy="140" r="220" fill="#ffffff" fill-opacity="0.45"/>
+  <circle cx="240" cy="860" r="300" fill="#b9d6d2" fill-opacity="0.45"/>
+  <g transform="translate(140 150)">
+    <rect x="0" y="80" width="1320" height="620" rx="36" fill="url(#card)"/>
+    <rect x="70" y="150" width="560" height="470" rx="28" fill="#eef5f6"/>
+    <rect x="710" y="150" width="540" height="220" rx="22" fill="#f7fbfc"/>
+    <rect x="710" y="400" width="255" height="220" rx="22" fill="#f7fbfc"/>
+    <rect x="995" y="400" width="255" height="220" rx="22" fill="#f7fbfc"/>
+    <rect x="120" y="220" width="460" height="300" rx="20" fill="url(#accent)"/>
+    <circle cx="360" cy="370" r="96" fill="#f2fbfa" fill-opacity="0.28"/>
+    <rect x="760" y="200" width="300" height="24" rx="12" fill="#d7e8e8"/>
+    <rect x="760" y="244" width="420" height="18" rx="9" fill="#dfecec"/>
+    <rect x="760" y="274" width="360" height="18" rx="9" fill="#dfecec"/>
+    <rect x="760" y="452" width="160" height="18" rx="9" fill="#dfecec"/>
+    <rect x="760" y="484" width="180" height="14" rx="7" fill="#dfecec"/>
+    <rect x="1045" y="452" width="160" height="18" rx="9" fill="#dfecec"/>
+    <rect x="1045" y="484" width="180" height="14" rx="7" fill="#dfecec"/>
+  </g>
+</svg>

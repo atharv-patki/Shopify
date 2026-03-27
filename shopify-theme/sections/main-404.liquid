@@ -1,0 +1,19 @@
+﻿<section class="section-shell page-hero">
+  <div class="section-card section-pad">
+    <div class="empty-state">
+      <h1>Page not found</h1>
+      <p>The page you requested does not exist or was moved. Use the links below to continue browsing.</p>
+      <div class="form-actions">
+        <a class="button button--primary" href="{{ routes.root_url }}">Back to home</a>
+        <a class="button button--ghost" href="{{ routes.collections_url }}">Browse catalog</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main 404",
+  "settings": []
+}
+{% endschema %}

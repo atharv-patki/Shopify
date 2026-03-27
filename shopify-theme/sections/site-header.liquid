@@ -1,0 +1,114 @@
+﻿{% liquid
+  assign home_url = routes.root_url
+  assign catalog_url = routes.collections_url
+  assign about_url = section.settings.about_link | default: '/#about-us'
+  assign contact_url = section.settings.contact_link | default: '/#contact-us'
+  assign shop_url = section.settings.shop_now_link | default: routes.all_products_collection_url
+  assign shop_label = section.settings.shop_now_label | strip | default: 'Shop now'
+  assign account_url = routes.account_login_url | default: '/account/login'
+  assign nav_menu = section.settings.main_menu
+%}
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="{{ home_url }}">
+      <span class="brand__mark">DH</span>
+      <span class="brand__text">
+        <span class="brand__name">{{ shop.name }}</span>
+        <span class="brand__tag">Premium Commerce Experience</span>
+      </span>
+    </a>
+
+    <nav class="main-nav" aria-label="Primary navigation">
+      {% if nav_menu != blank and nav_menu.links.size > 0 %}
+        {% for link in nav_menu.links %}
+          <a
+            href="{{ link.url }}"
+            {% if link.current %}aria-current="page"{% endif %}
+            class="{% if link.current %}is-active{% endif %}"
+          >
+            {{ link.title }}
+          </a>
+        {% endfor %}
+      {% else %}
+        <a href="{{ home_url }}">Home</a>
+        <a href="{{ catalog_url }}">Catalog</a>
+        <a href="{{ about_url }}">About</a>
+        <a href="{{ contact_url }}">Contact</a>
+      {% endif %}
+    </nav>
+
+    <div class="header-actions">
+      <a class="header-action-link" href="{{ routes.search_url }}" aria-label="Search products">Search</a>
+      <a class="header-action-link" href="{{ account_url }}" target="_top" aria-label="Open account login">Account</a>
+      <a class="button button--primary header-cta" href="{{ shop_url }}">{{ shop_label }}</a>
+      <a class="button button--ghost header-cart" href="{{ routes.cart_url }}" aria-label="Open cart">
+        Cart
+        <span class="cart-chip">{{ cart.item_count }}</span>
+      </a>
+    </div>
+
+    <button
+      type="button"
+      class="mobile-menu-toggle"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      data-mobile-toggle
+    >
+      ☰
+    </button>
+  </div>
+
+  <div class="mobile-drawer" data-mobile-drawer>
+    <div class="mobile-drawer__content">
+      {% if nav_menu != blank and nav_menu.links.size > 0 %}
+        {% for link in nav_menu.links %}
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        {% endfor %}
+      {% else %}
+        <a href="{{ home_url }}">Home</a>
+        <a href="{{ catalog_url }}">Catalog</a>
+        <a href="{{ about_url }}">About</a>
+        <a href="{{ contact_url }}">Contact</a>
+      {% endif %}
+      <a href="{{ routes.search_url }}">Search</a>
+      <a href="{{ account_url }}" target="_top">Account</a>
+      <a href="{{ shop_url }}">{{ shop_label }}</a>
+      <a href="{{ routes.cart_url }}">Cart ({{ cart.item_count }})</a>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Site header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "main_menu",
+      "label": "Main menu"
+    },
+    {
+      "type": "url",
+      "id": "about_link",
+      "label": "About fallback link"
+    },
+    {
+      "type": "url",
+      "id": "contact_link",
+      "label": "Contact fallback link"
+    },
+    {
+      "type": "url",
+      "id": "shop_now_link",
+      "label": "Shop now link"
+    },
+    {
+      "type": "text",
+      "id": "shop_now_label",
+      "label": "Shop now label",
+      "default": "Shop now"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,336 @@
+﻿{
+    "sections": {
+        "hero": {
+            "type": "hero-banner",
+            "blocks": {
+                "tile1": {
+                    "type": "tile",
+                    "settings": {
+                        "eyebrow": "Category",
+                        "title": "Recovery devices"
+                    }
+                },
+                "tile2": {
+                    "type": "tile",
+                    "settings": {
+                        "eyebrow": "Conversion flow",
+                        "title": "Optimized PDP journey"
+                    }
+                },
+                "tile3": {
+                    "type": "tile",
+                    "settings": {
+                        "eyebrow": "Retention engine",
+                        "title": "Email + loyalty loops"
+                    }
+                },
+                "tile4": {
+                    "type": "tile",
+                    "settings": {
+                        "eyebrow": "Trust stack",
+                        "title": "Secure checkout signals"
+                    }
+                }
+            },
+            "block_order": ["tile1", "tile2", "tile3", "tile4"],
+            "settings": {
+                "kicker": "Performance Recovery Essentials",
+                "heading": "Move better, recover faster, and perform at your peak",
+                "description": "Curated wellness tools designed for high-intent buyers who care about results, quality, and long-term performance.",
+                "primary_label": "Shop recovery picks",
+                "primary_link": "/collections/all",
+                "secondary_label": "Browse collections",
+                "secondary_link": "/collections",
+                "stat_one_value": "4.9/5",
+                "stat_one_label": "Verified customer rating",
+                "stat_two_value": "48h",
+                "stat_two_label": "Average dispatch window",
+                "stat_three_value": "30-day",
+                "stat_three_label": "Risk-free trial promise",
+                "visual_heading": "High-converting product system"
+            }
+        },
+        "marquee": {
+            "type": "brand-marquee",
+            "blocks": {
+                "m1": {
+                    "type": "item",
+                    "settings": {
+                        "label": "Performance wellness",
+                        "link": "/collections/all"
+                    }
+                },
+                "m2": {
+                    "type": "item",
+                    "settings": {
+                        "label": "Fast checkout UX",
+                        "link": "/cart"
+                    }
+                },
+                "m3": {
+                    "type": "item",
+                    "settings": {
+                        "label": "Premium quality control",
+                        "link": "/#catalog-overview"
+                    }
+                },
+                "m4": {
+                    "type": "item",
+                    "settings": {
+                        "label": "30-day trial confidence",
+                        "link": "/#retention"
+                    }
+                },
+                "m5": {
+                    "type": "item",
+                    "settings": {
+                        "label": "Built for repeat orders",
+                        "link": "/#contact-us"
+                    }
+                }
+            },
+            "block_order": ["m1", "m2", "m3", "m4", "m5"],
+            "settings": {}
+        },
+        "collections": {
+            "type": "featured-collections",
+            "settings": {
+                "kicker": "Collections",
+                "heading": "Shop by goal, routine, and use-case",
+                "description": "Guide customers to the right product group quickly with clear collection structure and intent-based browsing."
+            }
+        },
+        "best": {
+            "type": "best-sellers",
+            "settings": {
+                "kicker": "Best sellers",
+                "heading": "Top-rated picks customers reorder",
+                "description": "Feature your highest-converting products with clear pricing, direct actions, and strong visual trust.",
+                "product_limit": 8
+            }
+        },
+        "usp": {
+            "type": "usp-grid",
+            "blocks": {
+                "u1": {
+                    "type": "feature",
+                    "settings": {
+                        "title": "Premium visual hierarchy",
+                        "text": "Intentional typography, spacing, and card depth that feels market-ready from first click."
+                    }
+                },
+                "u2": {
+                    "type": "feature",
+                    "settings": {
+                        "title": "Conversion-driven structure",
+                        "text": "Sections are sequenced to reduce hesitation and move users cleanly from discovery to checkout."
+                    }
+                },
+                "u3": {
+                    "type": "feature",
+                    "settings": {
+                        "title": "Scalable Shopify setup",
+                        "text": "Built with reusable sections so content, collections, and campaigns can be managed quickly."
+                    }
+                }
+            },
+            "block_order": ["u1", "u2", "u3"],
+            "settings": {
+                "kicker": "Why this store works",
+                "heading": "Professional storefront architecture",
+                "description": "Designed to match modern premium eCommerce standards with performance, clarity, and trust."
+            }
+        },
+        "highlights": {
+            "type": "product-highlights",
+            "blocks": {
+                "p1": {
+                    "type": "point",
+                    "settings": {
+                        "point": "Clear variant, price, and value communication"
+                    }
+                },
+                "p2": {
+                    "type": "point",
+                    "settings": {
+                        "point": "Friction-light add-to-cart and cart flow"
+                    }
+                },
+                "p3": {
+                    "type": "point",
+                    "settings": {
+                        "point": "Trust and social proof before decision points"
+                    }
+                },
+                "p4": {
+                    "type": "point",
+                    "settings": {
+                        "point": "Mobile-optimized layout for real checkout behavior"
+                    }
+                }
+            },
+            "block_order": ["p1", "p2", "p3", "p4"],
+            "settings": {
+                "kicker": "Decision architecture",
+                "media_heading": "Every element supports buyer confidence",
+                "heading": "Make purchase decisions effortless",
+                "description": "From product storytelling to final CTA clarity, this section is designed to improve add-to-cart quality.",
+                "primary_label": "Explore all products",
+                "primary_link": "/collections/all",
+                "secondary_label": "Talk to support",
+                "secondary_link": "/#contact-us"
+            }
+        },
+        "trust": {
+            "type": "trust-badges",
+            "blocks": {
+                "t1": {
+                    "type": "badge",
+                    "settings": {
+                        "value": "SSL",
+                        "title": "Secure checkout",
+                        "text": "All transactions are protected through trusted payment gateways."
+                    }
+                },
+                "t2": {
+                    "type": "badge",
+                    "settings": {
+                        "value": "COD",
+                        "title": "Flexible payments",
+                        "text": "Cash on delivery can be enabled where supported by market and shipping setup."
+                    }
+                },
+                "t3": {
+                    "type": "badge",
+                    "settings": {
+                        "value": "24/7",
+                        "title": "Human support",
+                        "text": "Fast pre-sale and post-purchase support to build long-term buyer trust."
+                    }
+                }
+            },
+            "block_order": ["t1", "t2", "t3"],
+            "settings": {
+                "kicker": "Trust signals",
+                "heading": "Confidence cues that protect conversion",
+                "description": "Position trust details before checkout to reduce drop-off and improve purchase intent."
+            }
+        },
+        "testimonials": {
+            "type": "customer-testimonials",
+            "blocks": {
+                "c1": {
+                    "type": "testimonial",
+                    "settings": {
+                        "title": "Premium feel from first click",
+                        "quote": "The browsing experience feels polished and professional, like a live D2C brand.",
+                        "author": "Early access buyer"
+                    }
+                },
+                "c2": {
+                    "type": "testimonial",
+                    "settings": {
+                        "title": "Clear and trustworthy",
+                        "quote": "Product details, pricing clarity, and support messaging made checkout an easy decision.",
+                        "author": "Verified customer"
+                    }
+                },
+                "c3": {
+                    "type": "testimonial",
+                    "settings": {
+                        "title": "Smooth on mobile",
+                        "quote": "The mobile layout is clean and fast, with no confusion across the buying journey.",
+                        "author": "Mobile shopper"
+                    }
+                }
+            },
+            "block_order": ["c1", "c2", "c3"],
+            "settings": {
+                "kicker": "Social proof",
+                "heading": "What customers say after purchase",
+                "description": "Replace with niche-specific testimonials and UGC clips for final submission quality."
+            }
+        },
+        "faq": {
+            "type": "faq-accordion",
+            "blocks": {
+                "f1": {
+                    "type": "faq",
+                    "settings": {
+                        "question": "How long does shipping take?",
+                        "answer": "Dispatch usually starts within 24-48 hours, and delivery windows vary by region at checkout."
+                    }
+                },
+                "f2": {
+                    "type": "faq",
+                    "settings": {
+                        "question": "Is cash on delivery available?",
+                        "answer": "Yes, COD can be enabled for supported serviceable areas based on your shipping setup."
+                    }
+                },
+                "f3": {
+                    "type": "faq",
+                    "settings": {
+                        "question": "What is your return policy?",
+                        "answer": "Customers can request returns within the stated return window if product conditions are met."
+                    }
+                },
+                "f4": {
+                    "type": "faq",
+                    "settings": {
+                        "question": "How do I choose the right product?",
+                        "answer": "Use collection filters, product highlights, and support chat/contact to match your use-case quickly."
+                    }
+                }
+            },
+            "block_order": ["f1", "f2", "f3", "f4"],
+            "settings": {
+                "kicker": "FAQ",
+                "heading": "Answers that remove buying hesitation",
+                "description": "Resolve objections early with clear policy, shipping, and product-fit answers."
+            }
+        },
+        "newsletter": {
+            "type": "newsletter-signup",
+            "settings": {
+                "kicker": "Retention",
+                "heading": "Get launch offers, restocks, and expert tips",
+                "description": "Build repeat revenue with timed campaigns, product education, and loyalty-driven email flows.",
+                "button_label": "Subscribe now"
+            }
+        },
+        "contact": {
+            "type": "contact-form",
+            "settings": {
+                "heading": "Need help before checkout?",
+                "description": "Our support team can help with product fit, delivery questions, and order updates."
+            }
+        },
+        "conversion": {
+            "type": "conversion-banner",
+            "settings": {
+                "kicker": "Ready to buy",
+                "heading": "Start shopping premium recovery essentials",
+                "description": "Choose your products, check out securely, and get fast support from discovery to delivery.",
+                "primary_label": "Shop now",
+                "primary_link": "/collections/all",
+                "secondary_label": "Contact us",
+                "secondary_link": "/#contact-us"
+            }
+        }
+    },
+    "order": [
+        "hero",
+        "marquee",
+        "collections",
+        "best",
+        "usp",
+        "highlights",
+        "trust",
+        "testimonials",
+        "faq",
+        "newsletter",
+        "contact",
+        "conversion"
+    ]
+}

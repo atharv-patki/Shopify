@@ -1,0 +1,109 @@
+﻿<section class="section-shell" id="faq-section">
+  <div class="section-card section-pad">
+    <div class="section-head">
+      <span class="kicker">{{ section.settings.kicker }}</span>
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.description }}</p>
+    </div>
+
+    <div class="faq-list">
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          <details class="faq-item" {% if forloop.first %}open{% endif %} {{ block.shopify_attributes }}>
+            <summary>
+              {{ block.settings.question }}
+              <span data-faq-icon>+</span>
+            </summary>
+            <div class="faq-item__body">
+              <p>{{ block.settings.answer }}</p>
+            </div>
+          </details>
+        {% endfor %}
+      {% else %}
+        <details class="faq-item" open>
+          <summary>How fast can this store be launched?<span data-faq-icon>+</span></summary>
+          <div class="faq-item__body"><p>Once products and images are uploaded, the store can be finalized rapidly.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Are all primary pages connected?<span data-faq-icon>+</span></summary>
+          <div class="faq-item__body"><p>Yes, navigation and CTA links are mapped to routes or homepage anchors.</p></div>
+        </details>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ accordion",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "FAQ"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Answers before purchase"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Address objections to improve confidence and reduce support load."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Write your question"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Write your answer"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "FAQ accordion",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "Estimated delivery windows can be configured by region in shipping settings."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Can I return products?",
+            "answer": "Yes. Define your return policy in a policy page and link it in footer menus."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Is cash on delivery available?",
+            "answer": "If enabled for your market, COD can be offered at checkout."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,75 @@
+﻿{% assign current_variant = product.selected_or_first_available_variant %}
+
+<section class="section-shell page-hero">
+  <div class="section-card section-pad">
+    <div class="product-layout">
+      <div class="product-gallery">
+        {% if current_variant.featured_image %}
+          {{ current_variant.featured_image | image_url: width: 1280 | image_tag: loading: 'eager', alt: product.title }}
+        {% elsif product.featured_image %}
+          {{ product.featured_image | image_url: width: 1280 | image_tag: loading: 'eager', alt: product.title }}
+        {% else %}
+          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+      </div>
+
+      <div class="product-details">
+        <span class="kicker">{{ product.vendor }}</span>
+        <h1>{{ product.title }}</h1>
+
+        <div class="price-large">
+          {% if current_variant %}
+            {{ current_variant.price | money }}
+          {% else %}
+            {{ product.price | money }}
+          {% endif %}
+        </div>
+
+        {% if product.description != blank %}
+          <div class="rich-text">{{ product.description }}</div>
+        {% endif %}
+
+        {% form 'product', product, class: 'form-shell' %}
+          {% if product.variants.size > 1 %}
+            <div class="variant-row">
+              <label for="VariantSelector">Choose option</label>
+              <select class="input" id="VariantSelector" name="id">
+                {% for variant in product.variants %}
+                  <option value="{{ variant.id }}" {% if variant == current_variant %}selected{% endif %} {% unless variant.available %}disabled{% endunless %}>
+                    {{ variant.title }} - {{ variant.price | money }}{% unless variant.available %} - Sold out{% endunless %}
+                  </option>
+                {% endfor %}
+              </select>
+            </div>
+          {% else %}
+            <input type="hidden" name="id" value="{{ current_variant.id }}">
+          {% endif %}
+
+          <div class="variant-row">
+            <label for="Quantity">Quantity</label>
+            <input class="input" id="Quantity" type="number" name="quantity" min="1" value="1">
+          </div>
+
+          <div class="form-actions">
+            <button class="button button--primary" type="submit" {% unless current_variant.available %}disabled{% endunless %}>
+              {% if current_variant.available %}
+                Add to cart
+              {% else %}
+                Sold out
+              {% endif %}
+            </button>
+
+            <a class="button button--ghost" href="{{ routes.cart_url }}">Go to cart</a>
+          </div>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main product",
+  "settings": []
+}
+{% endschema %}

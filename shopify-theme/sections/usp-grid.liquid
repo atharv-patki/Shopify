@@ -1,0 +1,112 @@
+﻿<section class="section-shell" id="about-us">
+  <div class="section-card section-pad">
+    <div class="section-head">
+      <span class="kicker">{{ section.settings.kicker }}</span>
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.description }}</p>
+    </div>
+
+    <div class="feature-grid">
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          <article class="feature-card" {{ block.shopify_attributes }}>
+            <div class="feature-card__num">{{ forloop.index | prepend: '0' }}</div>
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.text }}</p>
+          </article>
+        {% endfor %}
+      {% else %}
+        <article class="feature-card">
+          <div class="feature-card__num">01</div>
+          <h3>Conversion-first structure</h3>
+          <p>Each section is sequenced to move users from awareness to action.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-card__num">02</div>
+          <h3>Mobile-perfect layout</h3>
+          <p>Spacing, typography, and CTAs are tuned for small screens first.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-card__num">03</div>
+          <h3>Trust-rich experience</h3>
+          <p>Social proof, clear shipping signals, and secure checkout messaging.</p>
+        </article>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "USP grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "About the build"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Professional storefront architecture"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "This structure mirrors modern premium stores with strategic section flow and polished visual hierarchy."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Feature title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Feature description"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "USP grid",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "title": "Premium design language",
+            "text": "Purposeful typography, elevated cards, and modern color depth."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "High-intent navigation",
+            "text": "All key actions are visible with clear shop, account, and cart controls."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "Clean conversion path",
+            "text": "From homepage to product to checkout, the journey is friction-light."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

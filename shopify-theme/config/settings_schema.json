@@ -1,0 +1,40 @@
+﻿[{
+    "name": "Premium Theme Settings",
+    "settings": [{
+            "type": "color",
+            "id": "accent_color",
+            "label": "Accent color",
+            "default": "#116466"
+        },
+        {
+            "type": "color",
+            "id": "accent_dark_color",
+            "label": "Accent dark color",
+            "default": "#1d3557"
+        },
+        {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background color",
+            "default": "#f7f6f1"
+        },
+        {
+            "type": "color",
+            "id": "surface_color",
+            "label": "Surface color",
+            "default": "#ffffff"
+        },
+        {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color",
+            "default": "#172334"
+        },
+        {
+            "type": "color",
+            "id": "muted_text_color",
+            "label": "Muted text color",
+            "default": "#536275"
+        }
+    ]
+}]

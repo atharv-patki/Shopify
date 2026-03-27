@@ -1,0 +1,70 @@
+﻿<section class="section-shell">
+  <div class="section-card section-pad">
+    <div class="section-head">
+      <span class="kicker">{{ section.settings.kicker }}</span>
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.description }}</p>
+    </div>
+
+    {% assign best_collection = collections[section.settings.collection] %}
+
+    {% if best_collection and best_collection.products_count > 0 %}
+      <div class="product-grid">
+        {% for product in best_collection.products limit: section.settings.product_limit %}
+          {% render 'product-card', product: product %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="empty-state">
+        <h3>Add products to unlock this section</h3>
+        <p>Select a collection in Theme Editor, then add products in Shopify Admin to show your best-seller cards.</p>
+        <a class="button button--primary" href="{{ routes.collections_url }}">Go to collections</a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Best sellers",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "High demand"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Best sellers shoppers trust"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Feature your strongest products with clear pricing and direct add-to-cart actions."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "product_limit",
+      "label": "Number of products",
+      "min": 4,
+      "max": 12,
+      "step": 1,
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "Best sellers"
+    }
+  ]
+}
+{% endschema %}

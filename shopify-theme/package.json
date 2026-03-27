@@ -1,0 +1,15 @@
+﻿{
+  "name": "shopify-theme-premium",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Premium Shopify theme with TypeScript source compiled to assets/theme.js",
+  "scripts": {
+    "build": "esbuild src/theme.ts --bundle --target=es2018 --format=iife --outfile=assets/theme.js",
+    "watch": "esbuild src/theme.ts --bundle --target=es2018 --format=iife --outfile=assets/theme.js --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.3",
+    "typescript": "^5.8.3"
+  }
+}

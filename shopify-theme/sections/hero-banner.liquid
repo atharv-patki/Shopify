@@ -1,0 +1,241 @@
+﻿{% liquid
+  assign primary_link = section.settings.primary_link | default: routes.all_products_collection_url
+  assign secondary_link = section.settings.secondary_link | default: routes.collections_url
+  assign primary_label = section.settings.primary_label | strip | default: 'Shop best sellers'
+  assign secondary_label = section.settings.secondary_label | strip | default: 'Browse collections'
+  assign external_hero_image_url = section.settings.external_hero_image_url | strip | default: 'https://picsum.photos/seed/recovery-hero/1600/1000'
+%}
+
+<section class="section-shell hero" id="home-top">
+  <div class="section-card section-pad">
+    <div class="hero__layout">
+      <div>
+        <div class="kicker">{{ section.settings.kicker }}</div>
+        <h1>{{ section.settings.heading }}</h1>
+        <p class="hero__description">{{ section.settings.description }}</p>
+
+        <div class="hero__actions">
+          <a class="button button--primary" href="{{ primary_link }}">{{ primary_label }}</a>
+          <a class="button button--ghost" href="{{ secondary_link }}">{{ secondary_label }}</a>
+        </div>
+
+        <div class="hero__meta">
+          <div class="hero__meta-item">
+            <strong>{{ section.settings.stat_one_value }}</strong>
+            <span>{{ section.settings.stat_one_label }}</span>
+          </div>
+          <div class="hero__meta-item">
+            <strong>{{ section.settings.stat_two_value }}</strong>
+            <span>{{ section.settings.stat_two_label }}</span>
+          </div>
+          <div class="hero__meta-item">
+            <strong>{{ section.settings.stat_three_value }}</strong>
+            <span>{{ section.settings.stat_three_label }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__visual {% if section.settings.hero_image != blank %}hero__visual--image{% endif %}" data-hero-visual>
+        <div class="hero__visual-top">
+          <strong>{{ section.settings.visual_heading }}</strong>
+          <span class="hero__dot"></span>
+        </div>
+
+        {% if section.settings.hero_image != blank %}
+          <div class="hero__visual-image-wrap">
+            {{ section.settings.hero_image | image_url: width: 1400 | image_tag: loading: 'lazy', alt: section.settings.hero_image.alt | default: shop.name }}
+          </div>
+        {% else %}
+          <div class="hero__visual-image-wrap">
+            <img src="{{ external_hero_image_url | escape }}" alt="{{ section.settings.visual_heading | default: shop.name }}" loading="lazy" width="1400" height="900">
+          </div>
+
+          <div class="hero__product-grid">
+            {% for block in section.blocks limit: 4 %}
+              <div class="hero__tile" {{ block.shopify_attributes }}>
+                <small>{{ block.settings.eyebrow }}</small>
+                <strong>{{ block.settings.title }}</strong>
+              </div>
+            {% endfor %}
+
+            {% if section.blocks.size == 0 %}
+              <div class="hero__tile">
+                <small>Category</small>
+                <strong>Performance wellness</strong>
+              </div>
+              <div class="hero__tile">
+                <small>Conversion ready</small>
+                <strong>Structured PDP flow</strong>
+              </div>
+              <div class="hero__tile">
+                <small>Retention loops</small>
+                <strong>Email + loyalty hooks</strong>
+              </div>
+              <div class="hero__tile">
+                <small>Trust stack</small>
+                <strong>Secure checkout UX</strong>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "Internship Capstone Storefront"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "A polished Shopify experience designed for conversion and brand storytelling"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Built as a practical internship project, this store combines modern UI, clear content hierarchy, and trust-focused UX patterns to deliver a professional buyer journey."
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Primary button label",
+      "default": "Shop best sellers"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Secondary button label",
+      "default": "Browse collections"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Secondary button link"
+    },
+    {
+      "type": "text",
+      "id": "stat_one_value",
+      "label": "Stat one value",
+      "default": "2-day"
+    },
+    {
+      "type": "text",
+      "id": "stat_one_label",
+      "label": "Stat one label",
+      "default": "Build sprint"
+    },
+    {
+      "type": "text",
+      "id": "stat_two_value",
+      "label": "Stat two value",
+      "default": "100%"
+    },
+    {
+      "type": "text",
+      "id": "stat_two_label",
+      "label": "Stat two label",
+      "default": "Responsive layout"
+    },
+    {
+      "type": "text",
+      "id": "stat_three_value",
+      "label": "Stat three value",
+      "default": "0"
+    },
+    {
+      "type": "text",
+      "id": "stat_three_label",
+      "label": "Stat three label",
+      "default": "Broken page links"
+    },
+    {
+      "type": "text",
+      "id": "visual_heading",
+      "label": "Visual heading",
+      "default": "Experience snapshot"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero image"
+    },
+    {
+      "type": "text",
+      "id": "external_hero_image_url",
+      "label": "External hero image URL (fallback)",
+      "default": "https://picsum.photos/seed/recovery-hero/1600/1000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Visual tile",
+      "settings": [
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow",
+          "default": "Category"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Performance wellness"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Hero banner",
+      "blocks": [
+        {
+          "type": "tile",
+          "settings": {
+            "eyebrow": "Category",
+            "title": "Performance wellness"
+          }
+        },
+        {
+          "type": "tile",
+          "settings": {
+            "eyebrow": "Conversion ready",
+            "title": "Structured PDP flow"
+          }
+        },
+        {
+          "type": "tile",
+          "settings": {
+            "eyebrow": "Retention loops",
+            "title": "Email + loyalty hooks"
+          }
+        },
+        {
+          "type": "tile",
+          "settings": {
+            "eyebrow": "Trust stack",
+            "title": "Secure checkout UX"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

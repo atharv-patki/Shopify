@@ -1,0 +1,50 @@
+﻿<section class="section-shell page-hero">
+  <div class="section-card section-pad">
+    <div class="section-head">
+      <span class="kicker">Catalog</span>
+      <h1>Browse all collections</h1>
+      <p>Explore curated collection pages that group your products by category and use-case.</p>
+    </div>
+
+    {% if collections.size > 0 %}
+      <div class="collection-grid">
+        {% for collection in collections %}
+          {% if collection.handle != 'frontpage' %}
+            <article class="collection-card">
+              <a class="collection-card__media" href="{{ collection.url }}">
+                {% if collection.featured_image %}
+                  {{ collection.featured_image | image_url: width: 960 | image_tag: loading: 'lazy', alt: collection.title }}
+                {% else %}
+                  {{ 'collection-2' | placeholder_svg_tag: 'placeholder-svg' }}
+                {% endif %}
+              </a>
+              <div class="collection-card__body">
+                <h3>{{ collection.title }}</h3>
+                <p>
+                  {% if collection.description != blank %}
+                    {{ collection.description | strip_html | truncate: 92 }}
+                  {% else %}
+                    Browse this collection and explore available products.
+                  {% endif %}
+                </p>
+                <a class="button button--ghost" href="{{ collection.url }}">View collection</a>
+              </div>
+            </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="empty-state">
+        <h3>No collections available yet</h3>
+        <p>Create collections in Shopify Admin and assign products to show them here.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main list collections",
+  "settings": []
+}
+{% endschema %}

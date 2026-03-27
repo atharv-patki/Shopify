@@ -1,0 +1,129 @@
+﻿<section class="section-shell">
+  <div class="section-card section-pad">
+    <div class="section-head">
+      <span class="kicker">{{ section.settings.kicker }}</span>
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.description }}</p>
+    </div>
+
+    <div class="testimonial-grid">
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          <article class="testimonial-card" {{ block.shopify_attributes }}>
+            <div class="testimonial-stars">★★★★★</div>
+            <h3>{{ block.settings.title }}</h3>
+            <p>"{{ block.settings.quote }}"</p>
+            <div class="testimonial-author-row">
+              {% if block.settings.author_image != blank %}
+                {{ block.settings.author_image | image_url: width: 96 | image_tag: loading: 'lazy', alt: block.settings.author, class: 'testimonial-avatar' }}
+              {% elsif block.settings.external_author_image_url != blank %}
+                <img class="testimonial-avatar" src="{{ block.settings.external_author_image_url | escape }}" alt="{{ block.settings.author }}" loading="lazy" width="96" height="96">
+              {% else %}
+                <img class="testimonial-avatar" src="{{ 'fallback-avatar.svg' | asset_url }}" alt="{{ block.settings.author }}" loading="lazy" width="96" height="96">
+              {% endif %}
+              <p>
+                <strong>{{ block.settings.author }}</strong>
+                {% if block.settings.author_link != blank %}
+                  <a class="testimonial-link" href="{{ block.settings.author_link }}">Read story</a>
+                {% endif %}
+              </p>
+            </div>
+          </article>
+        {% endfor %}
+      {% else %}
+        <article class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <h3>Premium feel from first click</h3>
+          <p>"The layout looks like a mature D2C brand and communicates trust instantly."</p>
+          <p><strong>Early reviewer</strong></p>
+        </article>
+        <article class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <h3>Checkout confidence increased</h3>
+          <p>"Trust sections and clear product cards reduced hesitation before checkout."</p>
+          <p><strong>Store tester</strong></p>
+        </article>
+        <article class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <h3>Responsive and smooth</h3>
+          <p>"Mobile and desktop both feel polished, not template-like."</p>
+          <p><strong>QA feedback</strong></p>
+        </article>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Customer testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "Social proof"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Customer testimonials"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Replace these with niche-specific testimonials and UGC before final submission."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Testimonial title"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "Customer feedback goes here"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author",
+          "default": "Customer name"
+        },
+        {
+          "type": "image_picker",
+          "id": "author_image",
+          "label": "Author image (optional)"
+        },
+        {
+          "type": "text",
+          "id": "external_author_image_url",
+          "label": "External author image URL (optional)",
+          "default": "https://picsum.photos/seed/avatar-reviewer/240/240"
+        },
+        {
+          "type": "url",
+          "id": "author_link",
+          "label": "Author story link (optional)"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Customer testimonials"
+    }
+  ]
+}
+{% endschema %}

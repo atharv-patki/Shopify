@@ -1,0 +1,104 @@
+﻿<section class="section-shell page-hero">
+  <div class="section-card section-pad">
+    <div class="section-head">
+      <span class="kicker">Search</span>
+      <h1>{{ section.settings.heading }}</h1>
+      <p>{{ section.settings.description }}</p>
+    </div>
+
+    <form class="search-form-inline" action="{{ routes.search_url }}" method="get" role="search">
+      <input class="input" type="search" name="q" value="{{ search.terms | escape }}" placeholder="Search products by name" aria-label="Search products">
+      <input type="hidden" name="type" value="product">
+      <button class="button button--primary" type="submit">Search</button>
+    </form>
+
+    {% if search.performed %}
+      <div class="search-meta">
+        <p>
+          {% if search.results_count > 0 %}
+            {{ search.results_count }} result{% if search.results_count != 1 %}s{% endif %} for "{{ search.terms | escape }}"
+          {% else %}
+            No results for "{{ search.terms | escape }}"
+          {% endif %}
+        </p>
+      </div>
+
+      {% if search.results_count > 0 %}
+        {% paginate search.results by section.settings.results_per_page %}
+          <div class="product-grid search-grid">
+            {% for item in search.results %}
+              {% if item.object_type == 'product' %}
+                {% render 'product-card', product: item %}
+              {% endif %}
+            {% endfor %}
+          </div>
+
+          {% if paginate.pages > 1 %}
+            <nav class="pagination" role="navigation" aria-label="Search pagination">
+              {% if paginate.previous %}
+                <a class="pagination__link pagination__link--arrow" href="{{ paginate.previous.url }}">Previous</a>
+              {% endif %}
+
+              {% for part in paginate.parts %}
+                {% if part.is_link %}
+                  <a class="pagination__link" href="{{ part.url }}">{{ part.title }}</a>
+                {% else %}
+                  {% if part.title == paginate.current_page %}
+                    <span class="pagination__link is-active" aria-current="page">{{ part.title }}</span>
+                  {% else %}
+                    <span class="pagination__ellipsis">{{ part.title }}</span>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+
+              {% if paginate.next %}
+                <a class="pagination__link pagination__link--arrow" href="{{ paginate.next.url }}">Next</a>
+              {% endif %}
+            </nav>
+          {% endif %}
+        {% endpaginate %}
+      {% else %}
+        <div class="empty-state">
+          <h3>No matching products found</h3>
+          <p>Try broader keywords or browse all products.</p>
+          <a class="button button--primary" href="{{ routes.all_products_collection_url }}">Browse all products</a>
+        </div>
+      {% endif %}
+    {% else %}
+      <div class="empty-state">
+        <h3>Start your product search</h3>
+        <p>Use product name, keyword, or use-case to discover the right item quickly.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main search",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Discover the right product fast"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Search by keyword, concern, or use-case to quickly find your best-fit products."
+    },
+    {
+      "type": "range",
+      "id": "results_per_page",
+      "label": "Results per page",
+      "min": 8,
+      "max": 24,
+      "step": 4,
+      "default": 12
+    }
+  ]
+}
+{% endschema %}
+

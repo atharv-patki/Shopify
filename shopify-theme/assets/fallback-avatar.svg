@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="title">
+  <title id="title">Default customer avatar</title>
+  <defs>
+    <linearGradient id="a" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#1f5f67"/>
+      <stop offset="100%" stop-color="#2d8b7b"/>
+    </linearGradient>
+  </defs>
+  <rect width="240" height="240" rx="120" fill="url(#a)"/>
+  <circle cx="120" cy="90" r="42" fill="#ecf9f7" fill-opacity="0.92"/>
+  <path d="M44 208c10-42 42-66 76-66s66 24 76 66" fill="#ecf9f7" fill-opacity="0.92"/>
+</svg>

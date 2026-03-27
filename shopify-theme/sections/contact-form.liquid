@@ -1,0 +1,57 @@
+﻿<section class="section-shell page-hero" id="contact-us">
+  <div class="section-card section-pad">
+    <div class="section-head">
+      <span class="kicker">Contact</span>
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.description }}</p>
+    </div>
+
+    {% form 'contact', class: 'form-shell' %}
+      {% if form.posted_successfully? %}
+        <p class="form-note">Thanks for contacting us. We will get back to you shortly.</p>
+      {% endif %}
+
+      {% if form.errors %}
+        <p class="form-note">{{ form.errors | default_errors }}</p>
+      {% endif %}
+
+      <div class="form-row">
+        <input class="input" type="text" name="contact[name]" placeholder="Your name" required>
+        <input class="input" type="email" name="contact[email]" placeholder="Your email" required>
+      </div>
+
+      <input class="input" type="tel" name="contact[phone]" placeholder="Phone number (optional)">
+      <textarea name="contact[body]" placeholder="How can we help you?" required></textarea>
+
+      <div class="form-actions">
+        <button class="button button--primary" type="submit">Send message</button>
+        <a class="button button--ghost" href="{{ routes.all_products_collection_url }}">Continue shopping</a>
+      </div>
+    {% endform %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact form",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Need help with your order?"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Use this contact form to answer pre-sale questions, delivery concerns, or product support requests."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact form"
+    }
+  ]
+}
+{% endschema %}

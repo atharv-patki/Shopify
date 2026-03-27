@@ -1,0 +1,121 @@
+﻿<section class="section-shell">
+  <div class="section-card section-pad">
+    <div class="section-head">
+      <span class="kicker">{{ section.settings.kicker }}</span>
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.description }}</p>
+    </div>
+
+    <div class="badge-grid">
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          <article class="badge-card" {{ block.shopify_attributes }}>
+            <strong>{{ block.settings.value }}</strong>
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.text }}</p>
+          </article>
+        {% endfor %}
+      {% else %}
+        <article class="badge-card">
+          <strong>4.9/5</strong>
+          <h3>Customer satisfaction</h3>
+          <p>Average rating from verified buyers and repeat customers.</p>
+        </article>
+        <article class="badge-card">
+          <strong>48h</strong>
+          <h3>Fast dispatch cycle</h3>
+          <p>Quick handling time to keep post-purchase confidence high.</p>
+        </article>
+        <article class="badge-card">
+          <strong>30 days</strong>
+          <h3>Return window</h3>
+          <p>Simple return policy that reduces buying hesitation.</p>
+        </article>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trust badges",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "Trust signals"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Signals that reduce checkout friction"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Present policy clarity and proof points before final purchase steps."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "default": "95%"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Card title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Short supporting text"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Trust badges",
+      "blocks": [
+        {
+          "type": "badge",
+          "settings": {
+            "value": "Secure",
+            "title": "Protected checkout",
+            "text": "Transactions are handled with trusted payment gateways."
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "value": "COD",
+            "title": "Cash on delivery",
+            "text": "Flexible payment options for higher purchase confidence."
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "value": "24/7",
+            "title": "Support response",
+            "text": "Fast support communication pre and post purchase."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
