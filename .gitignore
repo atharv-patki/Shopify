@@ -1,0 +1,5 @@
+node_modules/
+shopify-theme/node_modules/
+deliverables/*.zip
+shopify-theme-upload.zip
+*.log
